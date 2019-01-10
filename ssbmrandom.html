@@ -1,3 +1,6 @@
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta http-equiv="Content-Language" content="en">
 <html>
 <head>
 	<style>
@@ -13,15 +16,15 @@
 	<div style="display: flex; justify-content: center;">
 		<img id="css" align="middle" src="css2.png" style="width:1193px;height:357px" alt="Melee CSS" usemap="#melee">
 			<map name="melee">
-				<area id="drmario" alt="DrMario" shape="rect" coords="0,0,129,115">
-				<area id="mario" alt="Mario" shape="rect" coords="134,0,262,115" href="http://www.google.ca">
-				<area id="luigi" alt="Luigi" shape="rect" coords="267,0,395,115" href="ssbm.jpg">
-				<area id="bowser" alt="Bowser" shape="rect" coords="400,0,528,115" href="ssbm.jpg">
-				<area alt="Peach" shape="rect" coords="533,0,661,115" href="ssbm.jpg">
-				<area alt="Yoshi" shape="rect" coords="666,0,794,115" href="ssbm.jpg">
-				<area alt="DonkeyKong" shape="rect" coords="799,0,927,115" href="ssbm.jpg">
-				<area alt="CaptainFalcon" shape="rect" coords="932,0,1060,115" href="ssbm.jpg">
-				<area alt="Ganon" shape="rect" coords="1065,0,1193,115" href="ssbm.jpg">
+				<area alt="Dr Mario" onclick="update(alt)" shape="rect" coords="0,0,129,115">
+				<area alt="Mario" onclick="update(alt)" shape="rect" coords="134,0,262,115">
+				<area alt="Luigi" onclick="update(alt)" shape="rect" coords="267,0,395,115">
+				<area alt="Bowser" onclick="update(alt)" shape="rect" coords="400,0,528,115">
+				<area alt="Peach" onclick="update(alt)" shape="rect" coords="533,0,661,115">
+				<area alt="Yoshi" onclick="update(alt)" shape="rect" coords="666,0,794,115">
+				<area alt="Donkey Kong" onclick="update(alt)" shape="rect" coords="799,0,927,115">
+				<area alt="Captain Falcon" onclick="update(alt)" shape="rect" coords="932,0,1060,115">
+				<area alt="Ganon" onclick="update(alt)" shape="rect" coords="1065,0,1193,115">
 				
 				<area alt="Falco" shape="rect" coords="0,120,128,234" href="ssbm.jpg">
 				<area alt="Fox" shape="rect" coords="134,120,262,234" href="ssbm.jpg">
@@ -50,6 +53,11 @@
 		<input type="button" value="Random" align="middle" onclick="displayRandom()">
 		</form>
 	</div>
+
+	<script>
+	var selectedCharacters = [];
+	var index = 0;
+	
 	var drmario = 0;
 	var mario = 0;
 	var luigi = 0;
@@ -59,16 +67,17 @@
 	var dk = 0;
 	var cfalcon = 0;
 	var ganon = 0;
+	
 	var falco = 0;
 	var fox = 0;
 	var ness = 0;
 	var ics = 0;
 	var kirby = 0;
 	var samas = 0;
-	var zelda = 0;
-	var shiek = 0;
+	var zns = 0;
 	var link = 0;
 	var ylink = 0;
+	
 	var pichu = 0;
 	var pikachu = 0;
 	var jiggs = 0;
@@ -76,14 +85,22 @@
 	var gnw = 0;
 	var marth = 0;
 	var roy = 0;
-
-	<script>
-		function update() {
-			alert('Dr Mario: '+drmario.value)
+	
+	function update(name) {
+		index = selectedCharacters.indexOf(name);
+		if(index > -1){
+			selectedCharacters.splice(index, 1);
+		}else{
+			selectedCharacters.push(name);
 		}
-		function displayRandom() {
-			alert('Random!')
-		}
+	}
+	
+	
+	function displayRandom() {
+		
+		var randomChooser = Math.floor((Math.random() * selectedCharacters.length));
+		alert(selectedCharacters[randomChooser])
+	}
 	</script>
 
 </body>
