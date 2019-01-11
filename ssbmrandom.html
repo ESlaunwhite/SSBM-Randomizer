@@ -6,13 +6,14 @@
 	<style>
 		body	{background-color:black; font-family:courier}
 		hr		{color:white}
-		h1		{color:white}
+		h1		{color:white; text-align:center; text-decoration: underline}
+		h2		{color:white; text-align:center}
 		p		{color:lightgrey}
 	</style>
 </head>
 <body>
-	<h1 align="middle">Choose Your Characters</h1>
-	<hr><br>
+	<h2 align="middle">Choose Your Characters</h2>
+	<h1 id="chosenCharacter"><br></h1>
 	<div style="display: flex; justify-content: center;">
 		<img id="css" align="middle" src="css2.png" style="width:1193px;height:357px" alt="Melee CSS" usemap="#melee">
 			<map name="melee">
@@ -26,65 +27,40 @@
 				<area alt="Captain Falcon" onclick="update(alt)" shape="rect" coords="932,0,1060,115">
 				<area alt="Ganon" onclick="update(alt)" shape="rect" coords="1065,0,1193,115">
 				
-				<area alt="Falco" shape="rect" coords="0,120,128,234" href="ssbm.jpg">
-				<area alt="Fox" shape="rect" coords="134,120,262,234" href="ssbm.jpg">
-				<area alt="Ness" shape="rect" coords="267,120,395,234" href="ssbm.jpg">
-				<area alt="IceClimbers" shape="rect" coords="400,120,528,234" href="ssbm.jpg">
-				<area alt="Kirby" shape="rect" coords="533,120,661,234" href="ssbm.jpg">
-				<area alt="Samas" shape="rect" coords="666,120,794,234" href="ssbm.jpg">
-				<area alt="Zelda&Sheik" shape="rect" coords="799,120,927,234" href="ssbm.jpg">
-				<area alt="Link" shape="rect" coords="932,120,1060,234" href="ssbm.jpg">
-				<area alt="YLink" shape="rect" coords="1065,120,1193,234" href="ssbm.jpg">
+				<area alt="Falco" onclick="update(alt)" shape="rect" coords="0,120,128,234">
+				<area alt="Fox" onclick="update(alt)" shape="rect" coords="134,120,262,234">
+				<area alt="Ness" onclick="update(alt)" shape="rect" coords="267,120,395,234">
+				<area alt="Ice Climbers" onclick="update(alt)" shape="rect" coords="400,120,528,234">
+				<area alt="Kirby" onclick="update(alt)" shape="rect" coords="533,120,661,234">
+				<area alt="Samas" onclick="update(alt)" shape="rect" coords="666,120,794,234">
+				<area alt="Zelda/Sheik" onclick="update(alt)" shape="rect" coords="799,120,927,234">
+				<area alt="Link" onclick="update(alt)" shape="rect" coords="932,120,1060,234">
+				<area alt="YLink" onclick="update(alt)" shape="rect" coords="1065,120,1193,234">
 				
-				<area alt="RandomTopTiers" shape="rect" coords="0,240,128,355" href="ssbm.jpg">
-				<area alt="Pichu" shape="rect" coords="134,240,262,355" href="ssbm.jpg">
-				<area alt="Pikachu" shape="rect" coords="267,240,395,355" href="ssbm.jpg">
-				<area alt="Jigglypuff" shape="rect" coords="400,240,528,355" href="ssbm.jpg">
-				<area alt="Mewtwo" shape="rect" coords="533,240,661,355" href="ssbm.jpg">
-				<area alt="MrGameNWatch" shape="rect" coords="666,240,794,355" href="ssbm.jpg">
-				<area alt="Marth" shape="rect" coords="799,240,927,355" href="ssbm.jpg">
-				<area alt="Roy" shape="rect" coords="932,240,1060,355" href="ssbm.jpg">
-				<area alt="AllRandom" shape="rect" coords="1065,240,1193,355" href="ssbm.jpg">
+				<area alt="RandomTopTiers" onclick="randomTopTiers()" shape="rect" coords="0,240,128,355">
+				<area alt="Pichu" onclick="update(alt)" shape="rect" coords="134,240,262,355">
+				<area alt="Pikachu" onclick="update(alt)" shape="rect" coords="267,240,395,355">
+				<area alt="Jigglypuff" onclick="update(alt)" shape="rect" coords="400,240,528,355">
+				<area alt="Mewtwo" onclick="update(alt)" shape="rect" coords="533,240,661,355">
+				<area alt="Mr Game&Watch" onclick="update(alt)" shape="rect" coords="666,240,794,355">
+				<area alt="Marth" onclick="update(alt)" shape="rect" coords="799,240,927,355">
+				<area alt="Roy" onclick="update(alt)" shape="rect" coords="932,240,1060,355">
+				<area alt="AllRandom" onclick="randomAll()" shape="rect" coords="1065,240,1193,355">
 			</map>
 	</div>
 	<br>
 	<div style="display: flex; justify-content: center;">
 		<form>
-		<input type="button" value="Random" align="middle" onclick="displayRandom()">
+			<input type="button" value="Random" align="middle" onclick="displayRandom()">
+			<input type="button" value="Reset List" onClick="window.location.reload()">
 		</form>
 	</div>
-
+	
+	<p id="characterList"></p>
+	
 	<script>
 	var selectedCharacters = [];
 	var index = 0;
-	
-	var drmario = 0;
-	var mario = 0;
-	var luigi = 0;
-	var bowser = 0;
-	var peach = 0;
-	var yoshi = 0;
-	var dk = 0;
-	var cfalcon = 0;
-	var ganon = 0;
-	
-	var falco = 0;
-	var fox = 0;
-	var ness = 0;
-	var ics = 0;
-	var kirby = 0;
-	var samas = 0;
-	var zns = 0;
-	var link = 0;
-	var ylink = 0;
-	
-	var pichu = 0;
-	var pikachu = 0;
-	var jiggs = 0;
-	var m2 = 0;
-	var gnw = 0;
-	var marth = 0;
-	var roy = 0;
 	
 	function update(name) {
 		index = selectedCharacters.indexOf(name);
@@ -93,13 +69,63 @@
 		}else{
 			selectedCharacters.push(name);
 		}
+		
+		document.getElementById("characterList").innerHTML = "Your list: "+selectedCharacters;
 	}
 	
+	function randomAll(){
+		selectedCharacters = [];
+		
+		selectedCharacters.push("Dr Mario");
+		selectedCharacters.push("Mario");
+		selectedCharacters.push("Luigi");
+		selectedCharacters.push("Bowser");
+		selectedCharacters.push("Peach");
+		selectedCharacters.push("Yoshi");
+		selectedCharacters.push("Donkey Kong");
+		selectedCharacters.push("Captain Falcon");
+		selectedCharacters.push("Ganon");
+		
+		selectedCharacters.push("Falco");
+		selectedCharacters.push("Fox");
+		selectedCharacters.push("Ness");
+		selectedCharacters.push("Ice Climbers");
+		selectedCharacters.push("Kirby");
+		selectedCharacters.push("Samas");
+		selectedCharacters.push("Zelda/Sheik");
+		selectedCharacters.push("Link");
+		selectedCharacters.push("Young Link");
+		
+		selectedCharacters.push("Pichu");
+		selectedCharacters.push("Pikachu");
+		selectedCharacters.push("Jigglypuff");
+		selectedCharacters.push("Mewtwo");
+		selectedCharacters.push("Mr Game&Watch");
+		selectedCharacters.push("Marth");
+		selectedCharacters.push("Roy");
+		
+		displayRandom();
+	}
+	
+	function randomTopTiers(){
+		selectedCharacters = [];
+	
+		selectedCharacters.push("Fox");
+		selectedCharacters.push("Falco");
+		selectedCharacters.push("Marth");
+		selectedCharacters.push("Zelda/Sheik");
+		selectedCharacters.push("Jigglypuff");
+		selectedCharacters.push("Peach");
+		selectedCharacters.push("Ice Climbers");
+		selectedCharacters.push("Captain Falcon");
+		
+		displayRandom();
+	}
 	
 	function displayRandom() {
 		
 		var randomChooser = Math.floor((Math.random() * selectedCharacters.length));
-		alert(selectedCharacters[randomChooser])
+		document.getElementById("chosenCharacter").innerHTML = selectedCharacters[randomChooser];
 	}
 	</script>
 
