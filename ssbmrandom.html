@@ -4,11 +4,24 @@
 <html>
 <head>
 	<style>
-		body	{background-color:black; font-family:courier}
+		body	{background-color:black; font-family:arial}
 		hr		{color:white}
 		h1		{color:white; text-align:center; text-decoration: underline}
 		h2		{color:white; text-align:center}
-		p		{color:lightgrey}
+		p		{color:lightgrey; font-size: 16px}
+		.button{
+			background-color: #ff0000;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-family:arial;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -51,8 +64,8 @@
 	<br>
 	<div style="display: flex; justify-content: center;">
 		<form>
-			<input type="button" value="Random" align="middle" onclick="displayRandom()">
-			<input type="button" value="Reset List" onClick="window.location.reload()">
+			<input type="button" class="button" value="Random from my list" align="middle" onclick="displayRandom()">
+			<input type="button" class="button" value="Reset List" onClick="window.location.reload()">
 		</form>
 	</div>
 	
